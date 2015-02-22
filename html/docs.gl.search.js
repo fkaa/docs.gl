@@ -2,5 +2,5 @@
 
 $(function() {
 	// This file is loaded asynchronously. Now that it's loaded, reset the autocomplete source.
-	$("#search").autocomplete( "option", "source", search_versions[$("#search_versions").val()] );
+	$("#search-khr").autocomplete( "option", "source", search_versions["all"] );
 });

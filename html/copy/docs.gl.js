@@ -192,9 +192,9 @@ $(function() {
 	
 
 	search_fn = function(value) {
-		version = $("#search_versions").val();
-		if (!version || typeof version == 'undefined')
-			version = 'all';
+		//version = $("#search_versions").val();
+		//if (!version || typeof version == 'undefined')
+		var version = 'all';
 			
 		if (search_versions[version].indexOf(value) < 0)
 			return;
@@ -216,11 +216,11 @@ $(function() {
 		window.location.href = window.base_directory + directory + command_page;
 	}
 	
-	$( "#search_button" ).button().click(function(event) {
+	/*$( "#search_button" ).button().click(function(event) {
 		search_fn($("#search").val());
-	});
+	});*/
 	
-	$( "#search" ).autocomplete({
+	$( "#search-khr" ).autocomplete({
 		source: search_versions["all"],
 		minLength: 3,
 		select: function( event, ui ) {
@@ -228,18 +228,20 @@ $(function() {
 		},
 	});
 
-	$( "#search_versions" ).selectmenu({
+	/*$( "#search_versions" ).selectmenu({
 		change: function( event, ui ) {
-			$("#search").val("");
-			$("#search").autocomplete( "option", "source", search_versions[$("#search_versions").val()] );
+			$("#search-khr").val("");
+			$("#search-khr").autocomplete( "option", "source", "all" );
+			//$("#search").autocomplete( "option", "source", search_versions[$("#search_versions").val()] );
 		},
 		width: 70,
-	});
+	});*/
 
 	if (typeof $.cookie("api_version") != 'undefined')
 	{
-		$("#search_versions").val($.cookie("api_version").substring(0, 3) + "." + $.cookie("api_version").substring(3, 4)).selectmenu('refresh');
-		$("#search").autocomplete( "option", "source", search_versions[$("#search_versions").val()] );
+		//$("#search_versions").val($.cookie("api_version").substring(0, 3) + "." + $.cookie("api_version").substring(3, 4)).selectmenu('refresh');
+		//$("#search-khr").autocomplete( "option", "source", search_versions[$("#search_versions").val()] );
+		$("#search-khr").autocomplete( "option", "source", "all" );
 	}
 	
 	$('#hide_deprecated').click(function() {
